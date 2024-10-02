@@ -1,0 +1,48 @@
+---
+name: Arch Linux makepkg
+
+on:
+  push:
+
+jobs:
+  Arch-Linux-makepkg:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+    steps:
+      - name: Install `git`
+        run: |
+          pacman --sync --refresh --sysupgrade --noconfirm \
+            git
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          pacman --sync --refresh --sysupgrade --noconfirm \
+            base-devel \
+            sudo
+
+      - name: Fix permissions and update sudoers
+        run: |
+          git config --global --add safe.directory "${PWD}/.git"
+          git clone "${PWD}" /tmp/code
+          git config --global --add safe.directory /tmp/code
+          mkdir /.dotnet /.local /.nuget
+          chown -R nobody:nobody /tmp/code /.dotnet /.local /.nuget
+          echo "nobody ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/nobody
+
+      - name: Run `makepkg`
+        run: |
+          sudo --user nobody \
+            makepkg --cleanbuild --force --install --noconfirm --rmdeps --syncdeps
+        working-directory: /tmp/code/packaging
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: Arch-Linux-Package
+          path: /tmp/code/packaging/*.pkg.tar.zst
