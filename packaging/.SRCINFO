@@ -1,0 +1,27 @@
+pkgbase = ryujinx-git
+	pkgdesc = Experimental Nintendo Switch Emulator written in C#
+	pkgver = 1.1.1403.r2.g475b0b5
+	pkgrel = 1
+	url = https://github.com/hummeltech/Ryujinx
+	arch = x86_64
+	license = MIT
+	makedepends = chrpath
+	makedepends = git
+	makedepends = desktop-file-utils
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = sh
+	depends = zlib
+	provides = ryujinx
+	conflicts = ryujinx
+	noextract = dotnet-sdk-linux-x64.tar.gz
+	options = !strip
+	options = !debug
+	source = ryujinx-git::git+file:///home/dhummel/Desktop/Workspace/Personal/Ryujinx/packaging/..
+	source = dotnet-sdk-linux-x64.tar.gz::https://dotnetcli.azureedge.net/dotnet/Sdk/8.0.402/dotnet-sdk-8.0.402-linux-x64.tar.gz
+	sha256sums = SKIP
+	sha256sums = 10910e098161a0461b93f4f08d0c310b452b1a7f56b43378f547fd765d6f68bc
+
+pkgname = ryujinx-git
