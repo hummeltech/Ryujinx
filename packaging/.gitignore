@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+ryujinx-git
+dotnet-sdk-linux-x64.tar.gz
+pkg
+src
