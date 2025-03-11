@@ -1,14 +1,14 @@
 <table align="center">
     <tr>
         <td align="center" width="25%">
-            <img src="https://raw.githubusercontent.com/GreemDev/ryuassets/refs/heads/main/RyujinxApp_1024.png" alt="Ryujinx" >
+            <img src="https://raw.githubusercontent.com/Ryubing/ryuassets/refs/heads/main/RyujinxApp_1024.png" alt="Ryujinx" >
         </td>
         <td align="center" width="75%">
           
 # Ryujinx
           
 [![Release workflow](https://github.com/Ryubing/Ryujinx/actions/workflows/release.yml/badge.svg)](https://github.com/Ryubing/Ryujinx/actions/workflows/release.yml)
-[![Latest release](https://img.shields.io/github/v/release/GreemDev/Ryujinx)](https://github.com/Ryubing/Ryujinx/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/Ryubing/Ryujinx)](https://github.com/Ryubing/Ryujinx/releases/latest)
   <br>
 [![Canary workflow](https://github.com/Ryubing/Ryujinx/actions/workflows/canary.yml/badge.svg)](https://github.com/Ryubing/Ryujinx/actions/workflows/canary.yml)
 [![Latest canary release](https://img.shields.io/github/v/release/Ryubing/Canary-Releases?label=canary)](https://github.com/Ryubing/Canary-Releases/releases/latest)
