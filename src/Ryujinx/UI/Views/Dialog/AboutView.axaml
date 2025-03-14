@@ -174,19 +174,6 @@
                     FontSize="11"
                     Text="{Binding FormerDevelopers}"
                     TextWrapping="Wrap" />
-                <Button
-                    Margin="0, 5, 0, 0"
-                    Padding="5"
-                    HorizontalAlignment="Left"
-                    Background="Transparent"
-                    Click="Button_OnClick"
-                    Tag="https://github.com/Ryubing/Ryujinx/graphs/contributors?type=a">
-                    <TextBlock
-                        FontSize="10"
-                        Text="{ext:Locale AboutRyujinxContributorsButtonHeader}"
-                        TextAlignment="End"
-                        ToolTip.Tip="{ext:Locale AboutRyujinxMaintainersContentTooltipMessage}" />
-                </Button>
             </StackPanel>
         </Grid>
     </Grid>

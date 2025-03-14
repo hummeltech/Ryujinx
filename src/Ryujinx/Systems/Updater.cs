@@ -94,10 +94,10 @@ namespace Ryujinx.Ava.Systems
                                     LocaleManager.Instance[LocaleKeys.DialogUpdaterAlreadyOnLatestVersionMessage],
                                     string.Empty);
 
-                                if (userResult is UserResult.Ok)
+                                /*if (userResult is UserResult.Ok)
                                 {
                                     OpenHelper.OpenUrl(ReleaseInformation.GetChangelogForVersion(currentVersion));
-                                }
+                                }*/
                             }
                             
                             Logger.Info?.Print(LogClass.Application, "Up to date.");
@@ -184,10 +184,10 @@ namespace Ryujinx.Ava.Systems
                         LocaleManager.Instance[LocaleKeys.DialogUpdaterAlreadyOnLatestVersionMessage],
                         string.Empty);
 
-                    if (userResult is UserResult.Ok)
+                    /*if (userResult is UserResult.Ok)
                     {
                         OpenHelper.OpenUrl(ReleaseInformation.GetChangelogForVersion(currentVersion));
-                    }
+                    }*/
                 }
                 
                 Logger.Info?.Print(LogClass.Application, "Up to date.");
@@ -223,7 +223,7 @@ namespace Ryujinx.Ava.Systems
                 
                 Logger.Info?.Print(LogClass.Application, $"Version found: {newVersionString}");
                 
-            RequestUserToUpdate:
+            //RequestUserToUpdate:
                 // Show a message asking the user if they want to update
                 UserResult shouldUpdate = await ContentDialogHelper.CreateUpdaterChoiceDialog(
                     LocaleManager.Instance[LocaleKeys.RyujinxUpdater],
@@ -236,9 +236,9 @@ namespace Ryujinx.Ava.Systems
                         await UpdateRyujinx(_buildUrl);
                         break;
                     // Secondary button maps to no, which in this case is the show changelog button.
-                    case UserResult.No:
+                    /*case UserResult.No:
                         OpenHelper.OpenUrl(ReleaseInformation.GetChangelogUrl(currentVersion, newVersion));
-                        goto RequestUserToUpdate;
+                        goto RequestUserToUpdate;*/
                     default:
                         _running = false;
                         break;
