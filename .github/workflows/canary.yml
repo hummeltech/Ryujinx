@@ -38,17 +38,6 @@ jobs:
           echo "prev_build_version=${{ env.RYUJINX_BASE_VERSION }}.$((${{ github.run_number }} - 1))" >> $GITHUB_OUTPUT
         shell: bash
 
-      - name: Create tag
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: "${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}",
-              repo: "${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}",
-              ref: 'refs/tags/Canary-${{ steps.version_info.outputs.build_version }}',
-              sha: context.sha
-            })
-
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
