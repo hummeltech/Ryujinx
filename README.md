@@ -6,12 +6,13 @@
         <td align="center" width="75%">
           
 # Ryujinx
-          
-[![Release workflow](https://github.com/Ryubing/Ryujinx/actions/workflows/release.yml/badge.svg)](https://github.com/Ryubing/Ryujinx/actions/workflows/release.yml)
-[![Latest release](https://img.shields.io/github/v/release/Ryubing/Ryujinx)](https://github.com/Ryubing/Ryujinx/releases/latest)
-  <br>
-[![Canary workflow](https://github.com/Ryubing/Ryujinx/actions/workflows/canary.yml/badge.svg)](https://github.com/Ryubing/Ryujinx/actions/workflows/canary.yml)
+
+[![Latest release](https://img.shields.io/github/v/release/Ryubing/Stable-Releases?label=stable)](https://github.com/Ryubing/Stable-Releases/releases/latest)
 [![Latest canary release](https://img.shields.io/github/v/release/Ryubing/Canary-Releases?label=canary)](https://github.com/Ryubing/Canary-Releases/releases/latest)
+<br>
+<a href="https://discord.gg/PEuzjrFXUA">
+<img src="https://img.shields.io/discord/1294443224030511104?color=5865F2&label=Ryubing&logo=discord&logoColor=white" alt="Discord">
+</a>
         </td>
     </tr>
 </table>
@@ -20,7 +21,7 @@
   Ryujinx is an open-source Nintendo Switch emulator, originally created by gdkchan, written in C#.
   This emulator aims at providing excellent accuracy and performance, a user-friendly interface and consistent builds.
   It was written from scratch and development on the project began in September 2017.
-  Ryujinx is available on GitHub under the <a href="https://github.com/Ryubing/Ryujinx/blob/master/LICENSE.txt" target="_blank">MIT license</a>.
+  Ryujinx is available on a self-managed GitLab instance under the <a href="https://git.ryujinx.app/ryubing/ryujinx/-/blob/master/LICENSE.txt?ref_type=heads" target="_blank">MIT license</a>.
   <br />
 </p>
 <p align="center">
@@ -30,21 +31,11 @@
   <br>
   This is not a Ryujinx revival project. This is not a Phoenix project.
   <br>
-  Guides and documentation can be found on the <a href="https://github.com/Ryubing/Ryujinx/wiki">Wiki tab</a>.
-</p>
-<p align="center">
-  If you would like a more preservative fork of Ryujinx, check out <a href="https://github.com/ryujinx-mirror/ryujinx">ryujinx-mirror</a>.
+  Guides and documentation can be found on the <a href="https://git.ryujinx.app/ryubing/ryujinx/-/wikis/home">Wiki tab</a>.
 </p>
 
 <p align="center">
-    Click below to join the Discord:
-    <br>
-    <a href="https://discord.gg/PEuzjrFXUA">
-        <img src="https://img.shields.io/discord/1294443224030511104?color=5865F2&label=Ryubing&logo=discord&logoColor=white" alt="Discord">
-    </a>
-    <br>
-    <br>
-    <img src="https://raw.githubusercontent.com/Ryubing/Ryujinx/refs/heads/master/docs/shell.png">
+    <img src="https://git.ryujinx.app/ryubing/ryujinx/-/raw/master/docs/shell.png?ref_type=heads&inline=false" alt="Ryujinx example">
 </p>
 
 ## Usage
@@ -58,7 +49,7 @@ Stable builds are made every so often, based on the `master` branch, that then g
 These stable builds exist so that the end user can get a more **enjoyable and stable experience**.
 They are released every month or so, to ensure consistent updates, while not being an annoying amount of individual updates to download over the course of that month.
 
-You can find the latest stable release [here](https://github.com/Ryubing/Ryujinx/releases/latest).
+You can find the latest stable release [here](https://github.com/Ryubing/Stable-Releases/releases/latest).
 
 Canary builds are compiled automatically for each commit on the `master` branch.
 While we strive to ensure optimal stability and performance prior to pushing an update, these builds **may be unstable or completely broken**.
