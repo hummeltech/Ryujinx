@@ -34,7 +34,7 @@ jobs:
           script: |
             github.rest.git.createRef({
               owner: "${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}",
-              repo: "${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_SOURCE_REPO }}",
+              repo: "${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}",
               ref: 'refs/tags/${{ steps.version_info.outputs.build_version }}',
               sha: context.sha
             })
@@ -52,8 +52,6 @@ jobs:
             | Linux 64-bit | [Stable Linux Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_x64.tar.gz) |
             | Linux ARM 64-bit | [Stable Linux ARM Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_arm64.tar.gz) |
             | macOS | [Stable macOS Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-macos_universal.app.tar.gz) |
-            
-            **Full Changelog**: https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_SOURCE_REPO }}/compare/${{ steps.version_info.outputs.prev_build_version }}...${{ steps.version_info.outputs.build_version }}
           omitBodyDuringUpdate: true
           owner: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}
           repo: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}
@@ -175,8 +173,6 @@ jobs:
             | Linux 64-bit | [Stable Linux Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_x64.tar.gz) |
             | Linux ARM 64-bit | [Stable Linux ARM Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_arm64.tar.gz) |
             | macOS | [Stable macOS Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-macos_universal.app.tar.gz) |
-            
-            **Full Changelog**: https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_SOURCE_REPO }}/compare/${{ steps.version_info.outputs.prev_build_version }}...${{ steps.version_info.outputs.build_version }}
           omitBodyDuringUpdate: true
           allowUpdates: true
           replacesArtifacts: true
