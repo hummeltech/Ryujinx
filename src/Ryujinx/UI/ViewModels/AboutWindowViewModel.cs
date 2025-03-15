@@ -11,7 +11,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 {
     public partial class AboutWindowViewModel : BaseModel, IDisposable
     {
-        [ObservableProperty] private Bitmap _githubLogo;
+        [ObservableProperty] private Bitmap _gitLabLogo;
         [ObservableProperty] private Bitmap _discordLogo;
         [ObservableProperty] private string _version;
 
@@ -23,6 +23,8 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             Version = RyujinxApp.FullAppName + "\n" + Program.Version;
             UpdateLogoTheme(ConfigurationState.Instance.UI.BaseStyle.Value);
+
+            GitLabLogo = LoadBitmap("resm:Ryujinx.Assets.UIImages.Logo_GitLab.png?assembly=Ryujinx");
 
             RyujinxApp.ThemeChanged += Ryujinx_ThemeChanged;
         }
@@ -39,8 +41,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             bool isDarkTheme = theme == "Dark" || (theme == "Auto" && RyujinxApp.DetectSystemTheme() == ThemeVariant.Dark);
             
             string themeName = isDarkTheme ? "Dark" : "Light";
-
-            GithubLogo = LoadBitmap(LogoPathFormat.Format("GitHub", themeName));
+            
             DiscordLogo = LoadBitmap(LogoPathFormat.Format("Discord", themeName));
         }
 
@@ -50,7 +51,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             RyujinxApp.ThemeChanged -= Ryujinx_ThemeChanged;
             
-            GithubLogo.Dispose();
+            GitLabLogo.Dispose();
             DiscordLogo.Dispose();
             
             GC.SuppressFinalize(this);

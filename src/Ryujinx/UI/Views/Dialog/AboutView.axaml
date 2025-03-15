@@ -104,7 +104,7 @@
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
                     Spacing="10">
-                    <Button Name="GitHubRepoButton"
+                    <Button Name="GitRepoButton"
                         MinWidth="30"
                         MinHeight="30"
                         MaxWidth="30"
@@ -113,8 +113,8 @@
                         Background="Transparent"
                         Click="Button_OnClick"
                         CornerRadius="15"
-                        ToolTip.Tip="{ext:Locale AboutGithubUrlTooltipMessage}">
-                        <Image Source="{Binding GithubLogo}" />
+                        ToolTip.Tip="{ext:Locale AboutGitLabUrlTooltipMessage}">
+                        <Image Source="{Binding GitLabLogo}" />
                     </Button>
                     <Button
                         MinWidth="30"

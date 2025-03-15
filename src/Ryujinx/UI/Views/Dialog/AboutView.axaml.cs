@@ -19,8 +19,8 @@ namespace Ryujinx.Ava.UI.Views.Dialog
         {
             InitializeComponent();
 
-            GitHubRepoButton.Tag =
-                $"https://github.com/{ReleaseInformation.ReleaseChannelOwner}/{ReleaseInformation.ReleaseChannelRepo}";
+            GitRepoButton.Tag =
+                $"https://git.ryujinx.app/{ReleaseInformation.ReleaseChannelOwner}/{ReleaseInformation.ReleaseChannelSourceRepo}";
         }
 
         public static async Task Show()
