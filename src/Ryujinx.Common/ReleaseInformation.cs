@@ -1,5 +1,9 @@
+using Ryujinx.Common.Utilities;
 using System;
+using System.Net.Http;
 using System.Reflection;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace Ryujinx.Common
 {
@@ -34,12 +38,60 @@ namespace Ryujinx.Common
 
         public static string Version => IsValid ? BuildVersion : Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
 
-        public static string GetChangelogUrl(Version currentVersion, Version newVersion) =>
+        public static string GetChangelogUrl(Version currentVersion, Version newVersion, ReleaseChannels.Channel releaseChannel) =>
             IsCanaryBuild 
                 ? $"https://github.com/{ReleaseChannelOwner}/{ReleaseChannelSourceRepo}/compare/Canary-{currentVersion}...Canary-{newVersion}" 
-                : GetChangelogForVersion(newVersion);
+                : GetChangelogForVersion(newVersion, releaseChannel);
         
-        public static string GetChangelogForVersion(Version version) =>
-            $"https://github.com/{ReleaseChannelOwner}/{ReleaseChannelRepo}/releases/{version}";
+        public static string GetChangelogForVersion(Version version, ReleaseChannels.Channel releaseChannel) =>
+            $"https://github.com/{releaseChannel}/releases/{version}";
+        
+        public static async Task<ReleaseChannels> GetReleaseChannelsAsync(HttpClient httpClient)
+        {
+            ReleaseChannelPair releaseChannelPair = JsonHelper.Deserialize(await httpClient.GetStringAsync("https://ryujinx.app/api/release-channels"), ReleaseChannelPairContext.Default.ReleaseChannelPair);
+            return ReleaseChannels.Create(releaseChannelPair);
+        }
+    }
+
+    public struct ReleaseChannels
+    {
+        internal static ReleaseChannels Create(ReleaseChannelPair channelPair) =>
+            new()
+            {
+                Stable = new Channel(channelPair.Stable), 
+                Canary = new Channel(channelPair.Canary)
+            };
+
+        public Channel Stable { get; init; }
+        public Channel Canary { get; init; }
+        
+        public struct Channel
+        {
+            public Channel(string raw)
+            {
+                string[] parts = raw.Split('/');
+                Owner = parts[0];
+                Repo = parts[1];
+            }
+            
+            public string Owner;
+            public string Repo;
+
+            public override string ToString() => $"{Owner}/{Repo}";
+
+            public string GetLatestReleaseApiUrl() =>
+                $"https://api.github.com/repos/{ToString()}/releases/latest";
+        }
+    }
+    
+    [JsonSerializable(typeof(ReleaseChannelPair))]
+    partial class ReleaseChannelPairContext : JsonSerializerContext;
+
+    class ReleaseChannelPair
+    {
+        [JsonPropertyName("stable")]
+        public string Stable { get; set; }
+        [JsonPropertyName("canary")]
+        public string Canary { get; set; }
     }
 }

@@ -31,9 +31,9 @@ namespace Ryujinx.Ava.Systems
 {
     internal static class Updater
     {
+        private static ReleaseChannels.Channel? _currentReleaseChannel;
+        
         private const string GitHubApiUrl = "https://api.github.com";
-        private const string LatestReleaseUrl = 
-            $"{GitHubApiUrl}/repos/{ReleaseInformation.ReleaseChannelOwner}/{ReleaseInformation.ReleaseChannelRepo}/releases/latest";
         
         private static readonly GithubReleasesJsonSerializerContext _serializerContext = new(JsonHelper.GetDefaultSerializerOptions());
 
@@ -70,13 +70,22 @@ namespace Ryujinx.Ava.Systems
             }
             
             Logger.Info?.Print(LogClass.Application, "Checking for updates.");
-
+            
             // Get latest version number from GitHub API
             try
             {
                 using HttpClient jsonClient = ConstructHttpClient();
                 
-                string fetchedJson = await jsonClient.GetStringAsync(LatestReleaseUrl);
+                if (_currentReleaseChannel == null)
+                {
+                    ReleaseChannels releaseChannels = await ReleaseInformation.GetReleaseChannelsAsync(jsonClient);
+
+                    _currentReleaseChannel = ReleaseInformation.IsCanaryBuild
+                        ? releaseChannels.Canary
+                        : releaseChannels.Stable;
+                }
+                
+                string fetchedJson = await jsonClient.GetStringAsync(_currentReleaseChannel.Value.GetLatestReleaseApiUrl());
                 GithubReleasesJsonResponse fetched = JsonHelper.Deserialize(fetchedJson, _serializerContext.GithubReleasesJsonResponse);
                 _buildVer = fetched.TagName;
 
@@ -122,7 +131,7 @@ namespace Ryujinx.Ava.Systems
 
                         if (userResult is UserResult.Ok)
                         {
-                            OpenHelper.OpenUrl(ReleaseInformation.GetChangelogForVersion(currentVersion));
+                            OpenHelper.OpenUrl(ReleaseInformation.GetChangelogForVersion(currentVersion, _currentReleaseChannel.Value));
                         }
                     }
                     
