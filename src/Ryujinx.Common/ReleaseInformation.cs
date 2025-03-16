@@ -49,23 +49,22 @@ namespace Ryujinx.Common
         public static async Task<ReleaseChannels> GetReleaseChannelsAsync(HttpClient httpClient)
         {
             ReleaseChannelPair releaseChannelPair = JsonHelper.Deserialize(await httpClient.GetStringAsync("https://ryujinx.app/api/release-channels"), ReleaseChannelPairContext.Default.ReleaseChannelPair);
-            return ReleaseChannels.Create(releaseChannelPair);
+            return new ReleaseChannels(releaseChannelPair);
         }
     }
 
-    public struct ReleaseChannels
+    public readonly struct ReleaseChannels
     {
-        internal static ReleaseChannels Create(ReleaseChannelPair channelPair) =>
-            new()
-            {
-                Stable = new Channel(channelPair.Stable), 
-                Canary = new Channel(channelPair.Canary)
-            };
+        internal ReleaseChannels(ReleaseChannelPair channelPair)
+        {
+            Stable = new Channel(channelPair.Stable);
+            Canary = new Channel(channelPair.Canary);
+        }
 
-        public Channel Stable { get; init; }
-        public Channel Canary { get; init; }
+        public readonly Channel Stable;
+        public readonly Channel Canary;
         
-        public struct Channel
+        public readonly struct Channel
         {
             public Channel(string raw)
             {
@@ -74,8 +73,8 @@ namespace Ryujinx.Common
                 Repo = parts[1];
             }
             
-            public string Owner;
-            public string Repo;
+            public readonly string Owner;
+            public readonly string Repo;
 
             public override string ToString() => $"{Owner}/{Repo}";
 
