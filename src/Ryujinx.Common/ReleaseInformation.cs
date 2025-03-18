@@ -40,7 +40,7 @@ namespace Ryujinx.Common
 
         public static string GetChangelogUrl(Version currentVersion, Version newVersion, ReleaseChannels.Channel releaseChannel) =>
             IsCanaryBuild 
-                ? $"https://github.com/{ReleaseChannelOwner}/{ReleaseChannelSourceRepo}/compare/Canary-{currentVersion}...Canary-{newVersion}" 
+                ? $"https://git.ryujinx.app/ryubing/ryujinx/-/compare/Canary-{currentVersion}...Canary-{newVersion}"
                 : GetChangelogForVersion(newVersion, releaseChannel);
         
         public static string GetChangelogForVersion(Version version, ReleaseChannels.Channel releaseChannel) =>
