@@ -27,6 +27,19 @@ jobs:
           echo "build_version=${{ env.RYUJINX_BASE_VERSION }}.${{ github.run_number }}" >> $GITHUB_OUTPUT
           echo "prev_build_version=${{ env.RYUJINX_BASE_VERSION }}.$((${{ github.run_number }} - 1))" >> $GITHUB_OUTPUT
         shell: bash
+        
+      - name: Install GitLabCli
+        run: |
+          mkdir -p $HOME/.bin
+          gh release download -R GreemDev/GLI -O gli -p 'GitLabCli-linux_x64'
+          chmod +x gli
+          mv gli $HOME/.bin/
+          echo "$HOME/.bin" >> $GITHUB_PATH
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitLab tag
+        run: gli --access-token=${{ secrets.GITLAB_TOKEN }} --project=ryubing/ryujinx --command=CreateTag "${{ steps.version_info.outputs.build_version }}|master"
 
       - name: Create release
         uses: ncipollo/release-action@v1
@@ -42,6 +55,8 @@ jobs:
             | Linux 64-bit | [Stable Linux Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_x64.tar.gz) |
             | Linux ARM 64-bit | [Stable Linux ARM Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_arm64.tar.gz) |
             | macOS | [Stable macOS Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-macos_universal.app.tar.gz) |
+            
+            **[Full Changelog](https://git.ryujinx.app/ryubing/ryujinx/-/compare/${{ steps.version_info.outputs.prev_build_version }}...${{ steps.version_info.outputs.build_version }})**
           omitBodyDuringUpdate: true
           owner: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}
           repo: ${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}
@@ -164,6 +179,8 @@ jobs:
             | Linux 64-bit | [Stable Linux Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_x64.tar.gz) |
             | Linux ARM 64-bit | [Stable Linux ARM Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-linux_arm64.tar.gz) |
             | macOS | [Stable macOS Artifact](https://github.com/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_OWNER }}/${{ env.RYUJINX_TARGET_RELEASE_CHANNEL_REPO }}/releases/download/${{ steps.version_info.outputs.build_version }}/ryujinx-${{ steps.version_info.outputs.build_version }}-macos_universal.app.tar.gz) |
+            
+            **[Full Changelog](https://git.ryujinx.app/ryubing/ryujinx/-/compare/${{ steps.version_info.outputs.prev_build_version }}...${{ steps.version_info.outputs.build_version }})**
           omitBodyDuringUpdate: true
           allowUpdates: true
           replacesArtifacts: true
