@@ -42,6 +42,7 @@ jobs:
         run: |
           mkdir -p $HOME/.bin
           gh release download -R GreemDev/GLI -O gli -p 'GitLabCli-linux_x64'
+          chmod +x gli
           mv gli $HOME/.bin/
           echo "$HOME/.bin" >> $GITHUB_PATH
         env:
