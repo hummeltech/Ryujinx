@@ -193,10 +193,10 @@ namespace Ryujinx.Ava.Systems
                         LocaleManager.Instance[LocaleKeys.DialogUpdaterAlreadyOnLatestVersionMessage],
                         string.Empty);
 
-                    /*if (userResult is UserResult.Ok)
+                    if (userResult is UserResult.Ok)
                     {
-                        OpenHelper.OpenUrl(ReleaseInformation.GetChangelogForVersion(currentVersion));
-                    }*/
+                        OpenHelper.OpenUrl(ReleaseInformation.GetChangelogForVersion(currentVersion, _currentReleaseChannel.Value));
+                    }
                 }
                 
                 Logger.Info?.Print(LogClass.Application, "Up to date.");
