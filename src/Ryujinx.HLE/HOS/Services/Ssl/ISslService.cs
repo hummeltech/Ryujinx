@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 namespace Ryujinx.HLE.HOS.Services.Ssl
 {
     [Service("ssl")]
+    [Service("ssl:s")]
     class ISslService : IpcService
     {
         // NOTE: The SSL service is used by games to connect it to various official online services, which we do not intend to support.
@@ -120,6 +121,49 @@ namespace Ryujinx.HLE.HOS.Services.Ssl
             uint interfaceVersion = context.RequestData.ReadUInt32();
 
             Logger.Stub?.PrintStub(LogClass.ServiceSsl, new { interfaceVersion });
+
+            return ResultCode.Success;
+        }
+        
+        [CommandCmif(100)]
+        // CreateContextForSystem(u64 pid, nn::ssl::sf::SslVersion, u64)
+        public ResultCode CreateContextForSystem(ServiceCtx context)
+        {
+            ulong pid = context.RequestData.ReadUInt64();
+            SslVersion sslVersion = (SslVersion)context.RequestData.ReadUInt32();
+            ulong pidPlaceholder = context.RequestData.ReadUInt64();
+            
+            Logger.Stub?.PrintStub(LogClass.ServiceSsl, new { pid, sslVersion, pidPlaceholder });
+
+            return ResultCode.Success;
+        }
+        
+        [CommandCmif(101)]
+        // SetThreadCoreMask(u64 mask)
+        public ResultCode SetThreadCoreMask(ServiceCtx context)
+        {
+            ulong mask = context.RequestData.ReadUInt64();
+            
+            Logger.Stub?.PrintStub(LogClass.ServiceSsl, new { mask });
+
+            return ResultCode.Success;
+        }
+        
+        [CommandCmif(102)]
+        // GetThreadCoreMask() -> u64
+        public ResultCode GetThreadCoreMask(ServiceCtx context)
+        {
+            Logger.Stub?.PrintStub(LogClass.ServiceSsl);
+
+            return ResultCode.Success;
+        }
+        
+        [CommandCmif(103)]
+        // VerifySignature(buffer<0x5> unknownInput1, buffer<0x5> unknownInput2, buffer<0x5> unknownInput3, buffer<bytes, 4> unknown1)
+        public ResultCode VerifySignature(ServiceCtx context)
+        {
+            // I would log these values like a proper stub, but I genuinely don't know how.
+            Logger.Stub?.PrintStub(LogClass.ServiceSsl);
 
             return ResultCode.Success;
         }
