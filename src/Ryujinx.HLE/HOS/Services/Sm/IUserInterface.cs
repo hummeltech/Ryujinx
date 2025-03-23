@@ -21,7 +21,7 @@ namespace Ryujinx.HLE.HOS.Services.Sm
 
         private bool _isInitialized;
 
-        public IUserInterface(KernelContext context, SmRegistry registry)
+        public IUserInterface(KernelContext context, SmRegistry registry) : base(registerTipc: true)
         {
             _commonServer = new ServerBase(context, "CommonServer");
             _registry = registry;
