@@ -35,7 +35,7 @@ namespace Ryujinx.HLE.HOS.Services
             
             sw.Stop();
             
-            Logger.Notice.Print(
+            Logger.Debug?.Print(
                 LogClass.Emulation, 
                 $"{CmifCommands.Count} Cmif commands loaded in {sw.ElapsedTicks} ticks ({Stopwatch.Frequency} tps).",
                 GetType().AsPrettyString()
@@ -53,7 +53,7 @@ namespace Ryujinx.HLE.HOS.Services
             
                 sw.Stop();
             
-                Logger.Notice.Print(
+                Logger.Debug?.Print(
                     LogClass.Emulation, 
                     $"{TipcCommands.Count} Tipc commands loaded in {sw.ElapsedTicks} ticks ({Stopwatch.Frequency} tps).",
                     GetType().AsPrettyString()
