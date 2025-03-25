@@ -1,8 +1,10 @@
+using Gommon;
 using Ryujinx.Common.Logging;
 using Ryujinx.HLE.Exceptions;
 using Ryujinx.HLE.HOS.Ipc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -21,22 +23,43 @@ namespace Ryujinx.HLE.HOS.Services
         private int _selfId;
         private bool _isDomain;
 
-        public IpcService(ServerBase server = null)
+        public IpcService(ServerBase server = null, bool registerTipc = false)
         {
-            CmifCommands = GetType().Assembly.GetTypes()
-                .Where(type => type == GetType())
-                .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public))
+            Stopwatch sw = Stopwatch.StartNew();
+            
+            CmifCommands = GetType()
+                .GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public)
                 .SelectMany(methodInfo => methodInfo.GetCustomAttributes<CommandCmifAttribute>()
                 .Select(command => (command.Id, methodInfo)))
                 .ToDictionary(command => command.Id, command => command.methodInfo);
+            
+            sw.Stop();
+            
+            Logger.Debug?.Print(
+                LogClass.Emulation, 
+                $"{CmifCommands.Count} Cmif commands loaded in {sw.ElapsedTicks} ticks ({Stopwatch.Frequency} tps).",
+                GetType().AsPrettyString()
+            );
 
-            TipcCommands = GetType().Assembly.GetTypes()
-                .Where(type => type == GetType())
-                .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public))
-                .SelectMany(methodInfo => methodInfo.GetCustomAttributes<CommandTipcAttribute>()
-                .Select(command => (command.Id, methodInfo)))
-                .ToDictionary(command => command.Id, command => command.methodInfo);
+            if (registerTipc)
+            {
+                sw.Start();
 
+                TipcCommands = GetType()
+                    .GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public)
+                    .SelectMany(methodInfo => methodInfo.GetCustomAttributes<CommandTipcAttribute>()
+                        .Select(command => (command.Id, methodInfo)))
+                    .ToDictionary(command => command.Id, command => command.methodInfo);
+            
+                sw.Stop();
+            
+                Logger.Debug?.Print(
+                    LogClass.Emulation, 
+                    $"{TipcCommands.Count} Tipc commands loaded in {sw.ElapsedTicks} ticks ({Stopwatch.Frequency} tps).",
+                    GetType().AsPrettyString()
+                );
+            }
+            
             Server = server;
 
             _parent = this;
@@ -127,10 +150,7 @@ namespace Ryujinx.HLE.HOS.Services
                 }
                 else
                 {
-                    string serviceName;
-
-
-                    serviceName = (service is not DummyService dummyService) ? service.GetType().FullName : dummyService.ServiceName;
+                    string serviceName = (service is not DummyService dummyService) ? service.GetType().FullName : dummyService.ServiceName;
 
                     Logger.Warning?.Print(LogClass.KernelIpc, $"Missing service {serviceName}: {commandId} ignored");
                 }
