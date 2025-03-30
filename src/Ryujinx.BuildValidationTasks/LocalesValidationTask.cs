@@ -15,7 +15,7 @@ namespace Ryujinx.BuildValidationTasks
         {
             Console.WriteLine("Running Locale Validation Task...");
 
-            string path = projectPath + "src/Ryujinx/Assets/locales.json";
+            string path = projectPath + "assets/locales.json";
             string data;
 
             using (StreamReader sr = new(path))

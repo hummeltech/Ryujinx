@@ -76,7 +76,7 @@ namespace Ryujinx.Ava.UI.Views.Main
 
         private static IEnumerable<MenuItem> GenerateLanguageMenuItems()
         {
-            const string LocalePath = "Ryujinx/Assets/locales.json";
+            const string LocalePath = "Ryujinx/Assets/Locale.json";
 
             string languageJson = EmbeddedResources.ReadAllText(LocalePath);
 
