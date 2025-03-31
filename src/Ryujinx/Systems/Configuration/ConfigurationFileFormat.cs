@@ -15,7 +15,7 @@ namespace Ryujinx.Ava.Systems.Configuration
         /// <summary>
         /// The current version of the file format
         /// </summary>
-        public const int CurrentVersion = 68;
+        public const int CurrentVersion = 69;
 
         /// <summary>
         /// Version of the configuration file format
@@ -186,6 +186,11 @@ namespace Ryujinx.Ava.Systems.Configuration
         /// Ignore Controller Applet dialog
         /// </summary>
         public bool IgnoreApplet { get; set; }
+
+        /// <summary>
+        /// Skip user profiles manager dialog during gameplay(the used profile in the configuration will be selected)
+        /// </summary>
+        public bool SkipUserProfiles { get; set; }
 
         /// <summary>
         /// Enables or disables save window size, position and state on close.

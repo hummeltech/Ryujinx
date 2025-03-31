@@ -396,6 +396,11 @@ namespace Ryujinx.Ava.Systems.Configuration
             public ReactiveObject<bool> IgnoreControllerApplet { get; private set; }
 
             /// <summary>
+            ///  Skip User Profiles Manager
+            /// </summary>
+            public ReactiveObject<bool> SkipUserProfilesManager { get; private set; }
+
+            /// <summary>
             /// Uses Hypervisor over JIT if available
             /// </summary>
             public ReactiveObject<bool> UseHypervisor { get; private set; }
@@ -445,6 +450,8 @@ namespace Ryujinx.Ava.Systems.Configuration
                 IgnoreMissingServices.LogChangesToValue(nameof(IgnoreMissingServices));
                 IgnoreControllerApplet = new ReactiveObject<bool>();
                 IgnoreControllerApplet.LogChangesToValue(nameof(IgnoreControllerApplet));
+                SkipUserProfilesManager = new ReactiveObject<bool>();
+                SkipUserProfilesManager.LogChangesToValue(nameof(SkipUserProfilesManager));
                 AudioVolume = new ReactiveObject<float>();
                 AudioVolume.LogChangesToValue(nameof(AudioVolume));
                 UseHypervisor = new ReactiveObject<bool>();

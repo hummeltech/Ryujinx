@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using FluentAvalonia.UI.Controls;
 using Ryujinx.Ava.Common.Locale;
+using Ryujinx.Ava.Systems.Configuration;
 using Ryujinx.Ava.UI.Controls;
 using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.ViewModels;
@@ -78,6 +79,13 @@ namespace Ryujinx.Ava.UI.Applet
 
         public static async Task<(UserId Id, bool Result)> ShowInputDialog(ProfileSelectorDialogViewModel viewModel)
         {
+
+            if (ConfigurationState.Instance.System.SkipUserProfilesManager)
+            {
+                UserId defaultId = viewModel.SelectedUserId;
+                return (defaultId, true);
+            }
+
             ContentDialog contentDialog = new()
             {
                 Title = LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle],

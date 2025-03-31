@@ -5373,6 +5373,31 @@
       }
     },
     {
+      "ID": "SettingsTabSystemSkipUserProfilesManager",
+      "Translations": {
+        "ar_SA": "تخطي مربع حوار 'إدارة الملفات الشخصية للمستخدم'",
+        "de_DE": "Überspringen des Dialogs 'Benutzerprofile verwalten'",
+        "el_GR": "Παράκαμψη διαλόγου 'Διαχείριση Προφίλ _Χρηστών'",
+        "en_US": "Skip dialog 'Manage User Profiles'",
+        "es_ES": "Omitir el diálogo 'Gestionar perfiles de usuario'",
+        "fr_FR": "Ignorer le dialogue 'Gérer les profils d'utilisateurs'",
+        "he_IL": "דילוג על הדיאלוג 'נהל פרופילי משתמש'",
+        "it_IT": "Salta la finestra di dialogo 'Gestisci i profili utente'",
+        "ja_JP": "「ユーザプロファイルを管理」ダイアログをスキップ",
+        "ko_KR": "'사용자 프로필 관리' 대화 상자 건너뛰기",
+        "no_NO": "Hopp over dialogen 'Administrere Brukerprofiler'",
+        "pl_PL": "Pomiń okno dialogowe 'Zarządzaj profilami użytkowników'",
+        "pt_BR": "Ignorar a caixa de diálogo 'Gerenciar Perfis de Usuário'",
+        "ru_RU": "Пропустить диалог 'Менеджер учётных записей'",
+        "sv_SE": "Hoppa över dialogen 'Hantera användarprofiler'",
+        "th_TH": "ข้ามหน้าต่างโต้ตอบ 'จัดการโปรไฟล์ผู้ใช้งาน'",
+        "tr_TR": "'Kullanıcı Profillerini Yönet' iletişim kutusunu atla",
+        "uk_UA": "Пропустити діалог 'Керувати профілями користувачів'",
+        "zh_CN": "跳过对话框“管理用户账户”",
+        "zh_TW": "略過對話框「管理使用者設定檔」"
+      }
+    },
+    {
       "ID": "SettingsTabGraphics",
       "Translations": {
         "ar_SA": "الرسومات",
@@ -16770,6 +16795,31 @@
         "uk_UA": "Діалогове вікно Аплету Контролера не з'явиться, якщо геймпад було відключено під час роботи програми.\n\nЗалиште вимкненим якщо не впевнені.",
         "zh_CN": "在应用程序运行时如果游戏手柄断开连接则不会显示控制器小程序对话框。\n\n如果不确定，请保持关闭状态。",
         "zh_TW": "在模擬應用程式時如果遊戲手柄中斷連線則不會顯示控制器小程式。\n\n如果不確定，請保持關閉狀態。"
+      }
+    },
+    {
+      "ID": "SkipUserProfilesTooltip",
+      "Translations": {
+        "ar_SA": "",
+        "de_DE": "Diese Option überspringt den Dialog 'Benutzerprofile verwalten' während des Spiels und verwendet ein voreingestelltes Profil.\n\nDie Profilumschaltung finden Sie unter 'Einstellungen' - 'Benutzerprofile verwalten'. Wählen Sie das gewünschte Profil aus, bevor Sie das Spiel laden.",
+        "el_GR": "Αυτή η επιλογή παρακάμπτει το παράθυρο διαλόγου 'Διαχειριστής Προφίλ Χρήστη' κατά τη διάρκεια του παιχνιδιού, χρησιμοποιώντας ένα προεπιλεγμένο προφίλ.\n\nΗ εναλλαγή προφίλ βρίσκεται στις 'Ρυθμίσεις' - 'Διαχειριστής Προφίλ Χρήστη'. Επιλέξτε το επιθυμητό προφίλ πριν φορτώσετε το παιχνίδι.",
+        "en_US": "This option skips the 'Manage User Profiles' dialog during gameplay, using a pre-selected profile.\n\nProfile switching is found in 'Settings' - 'Manager User Profiles'. Select the desired profile before loading the game.",
+        "es_ES": "Esta opción omite el diálogo de 'Gestionar perfiles de usuario' durante el juego, utilizando un perfil preseleccionado.\n\nEl cambio de perfil se encuentra en 'Configuración' - 'Gestionar perfiles de usuario'. Seleccione el perfil deseado antes de cargar el juego.",
+        "fr_FR": "Cette option permet d'éviter le dialogue du 'Gérer les profils d'utilisateurs' pendant le jeu, en utilisant un profil pré-sélectionné.\n\nLa sélection du profil se trouve dans 'Paramètres' - 'Gérer les profils d'utilisateurs'. Sélectionnez le profil souhaité avant de charger la partie.",
+        "he_IL": "",
+        "it_IT": "Questa opzione salta la finestra di dialogo 'Gestisci i profili utente' durante il gioco, utilizzando un profilo pre-selezionato.\n\nIl cambio del profilo si trova in 'Impostazioni' - 'Gestisci i profili utente'. Seleziona il profilo desiderato prima di caricare il gioco.",
+        "ja_JP": "このオプションは、ゲームプレイ中に「ユーザプロファイルを管理」ダイアログをスキップし、事前に選択されたプロファイルを使用します。\n\nプロファイルの切り替えは、「設定」-「ユーザプロファイルを管理」で見つけることができます。ゲームのロード前に目的のプロファイルをを選択してください。",
+        "ko_KR": "이 옵션은 게임 플레이 중 '사용자 프로필 관리' 대화 상자를 건너뛰고, 미리 선택된 프로필을 사용합니다.\n\n프로필 전환은 '설정' - '사용자 프로필 관리'에서 찾을 수 있습니다. 게임 로드 전에 원하는 프로필을 선택하세요.",
+        "no_NO": "Dette alternativet hopper over dialogen 'Administrere Brukerprofiler' under spilling, og bruker en forhåndsvalgt profil.\n\nProfilbytte finnes i 'Innstillinger' - 'Administrer Brukerprofiler'. Velg ønsket profil før du laster spillet.",
+        "pl_PL": "Ta opcja pomija okno dialogowe 'Zarządzaj profilami użytkowników' podczas gry, używając wcześniej wybrany profil.\n\nPrzełączanie profili można znaleźć w 'Ustawienia' - 'Zarządzaj Profilami Użytkowników'. Wybierz żądany profil przed załadowaniem gry.",
+        "pt_BR": "Esta opção ignora a caixa de diálogo 'Gerenciar Perfis de Usuário' durante o jogo, usando um perfil pré-selecionado.\n\nO gerenciamento de perfis pode ser encontrado em 'Configurações' - 'Gerenciar Perfis de Usuários'. Selecione o perfil desejado antes de carregar o jogo.",
+        "ru_RU": "Эта опция пропускает диалоговое окно 'Менеджер учётных записей' во время игры, используя предварительно выбранный профиль.\n\nПереключение профилей можно найти в 'Параметры' - 'Менеджер учётных записей'. Выберите желаемый профиль перед загрузкой игры.",
+        "sv_SE": "Det här alternativet hoppar över dialogrutan 'Hantera användarprofiler' under spelet och använder en förvald profil.\n\nProfilväxling finns i 'Inställningar' - 'Hantera användarprofiler'. Välj önskad profil innan du laddar spelet.",
+        "th_TH": "ตัวเลือกนี้จะข้ามหน้าต่าง 'จัดการโปรไฟล์ผู้ใช้งาน' ระหว่างเล่นเกม โดยใช้โปรไฟล์ที่เลือกไว้ล่วงหน้า\n\nการสลับโปรไฟล์สามารถพบได้ใน 'ตั้งค่า' - 'จัดการโปรไฟล์ผู้ใช้งาน' เลือกโปรไฟล์ที่คุณต้องการก่อนโหลดเกม",
+        "tr_TR": "Bu seçenek, oyun sırasında 'Kullanıcı Profillerini Yönet' iletişim kutusunu atlar ve önceden seçilmiş bir profil kullanır.\n\nProfil değiştirme 'Seçenekler' - 'Kullanıcı Profillerini Yönet' bölümünde bulunur. Oyunu yüklemeden önce istediğiniz profili seçin.",
+        "uk_UA": "Ця опція пропускає діалогове вікно 'Керувати профілями користувачів' під час гри, використовуючи попередньо вибраний профіль.\n\nПеремикання профілів можна знайти в 'Налаштування' - 'Керувати профілями користувачів'. Виберіть потрібний профіль перед завантаженням гри.",
+        "zh_CN": "此选项跳过游戏过程中的“管理用户账户”对话框，使用预选的配置。\n\n可以在“设置” - “管理用户账户”中找到配置文件切换。 在加载游戏之前选择所需的配置文件。",
+        "zh_TW": "這個選項跳過遊戲過程中的「管理使用者設定檔」對話框，使用預先選取的設定。\n\n可以在「設定」-「管理使用者設定檔」中找到設定檔切換。 在載入遊戲前選擇您需要的設定檔。"
       }
     },
     {

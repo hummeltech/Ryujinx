@@ -133,6 +133,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         public bool EnableDiscordIntegration { get; set; }
         public bool ShowConfirmExit { get; set; }
         public bool IgnoreApplet { get; set; }
+        public bool SkipUserProfiles { get; set; }
         public bool RememberWindowState { get; set; }
         public bool ShowOldUI { get; set; }
         public int HideCursor { get; set; }
@@ -606,6 +607,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             DramSize = config.System.DramSize;
             IgnoreMissingServices = config.System.IgnoreMissingServices;
             IgnoreApplet = config.System.IgnoreControllerApplet;
+            SkipUserProfiles = config.System.SkipUserProfilesManager;
 
             // CPU
             EnablePptc = config.System.EnablePtc;
@@ -709,6 +711,7 @@ namespace Ryujinx.Ava.UI.ViewModels
             config.System.DramSize.Value = DramSize;
             config.System.IgnoreMissingServices.Value = IgnoreMissingServices;
             config.System.IgnoreControllerApplet.Value = IgnoreApplet;
+            config.System.SkipUserProfilesManager.Value = SkipUserProfiles;
 
             // CPU
             config.System.EnablePtc.Value = EnablePptc;

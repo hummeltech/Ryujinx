@@ -103,6 +103,7 @@ namespace Ryujinx.Ava.Systems.Configuration
             System.DramSize.Value = cff.DramSize;
             System.IgnoreMissingServices.Value = cff.IgnoreMissingServices;
             System.IgnoreControllerApplet.Value = cff.IgnoreApplet;
+            System.SkipUserProfilesManager.Value = cff.SkipUserProfiles;
             System.UseHypervisor.Value = cff.UseHypervisor;
 
             UI.GuiColumns.FavColumn.Value = shouldLoadFromFile ? cff.GuiColumns.FavColumn : UI.GuiColumns.FavColumn.Value;
@@ -459,7 +460,8 @@ namespace Ryujinx.Ava.Systems.Configuration
                         TurboMode = Key.Unbound,
                         TurboModeWhileHeld = false
                     };
-                })
+                }),
+                (69, static cff => cff.SkipUserProfiles = false)
             );
     }
 }

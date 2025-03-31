@@ -82,6 +82,7 @@ namespace Ryujinx.Ava.Systems.Configuration
                 DramSize = System.DramSize,
                 IgnoreMissingServices = System.IgnoreMissingServices,
                 IgnoreApplet = System.IgnoreControllerApplet,
+                SkipUserProfiles = System.SkipUserProfilesManager,
                 UseHypervisor = System.UseHypervisor,
                 GuiColumns = new GuiColumns
                 {
@@ -206,6 +207,7 @@ namespace Ryujinx.Ava.Systems.Configuration
             System.DramSize.Value = MemoryConfiguration.MemoryConfiguration4GiB;
             System.IgnoreMissingServices.Value = false;
             System.IgnoreControllerApplet.Value = false;
+            System.SkipUserProfilesManager.Value = false;
             System.UseHypervisor.Value = true;
             Multiplayer.LanInterfaceId.Value = "0";
             Multiplayer.Mode.Value = MultiplayerMode.Disabled;
